@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="root" class="main-container">
+        <div class="navbar">
+            <h1>Expense Tracker</h1>
+            <p>Store and manage all your transactions at one place</p>
+        </div>
+
+        <div class="create-transaction-container">
+            <div class="create-transaction-header">
+                <h5>Add New Transaction</h5>
+            </div>
+
+            <form class="create-transaction-form" id="create-transaction-form">
+                <div class="form-group">
+                    <label for="description">Description : </label>
+                    <input type="text" id="description" placeholder="Transaction name">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category :</label>
+                    <select name="category" id="category">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date :</label>
+                    <input type="date" id="date">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount :</label>
+                    <input type="number" id="amount" placeholder="1000">
+                </div>
+
+                <button type="submit" id="submitBtn">Add Transaction</button>
+            </form>
+        </div>
+
+
+        <div class="transactions-list-container">
+            <div class="transactions-container-incomes">
+                <h4>Incomes</h4>
+                <div class="incomes-list">
+
+                </div>
+            </div>
+            <div class="transactions-container-expenses">
+                <h4>Expenses</h4>
+                <div class="expenses-list">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
