@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="root" class="main-container">
         <div class="navbar">
@@ -18,45 +23,101 @@
                 <h5>Add New Transaction</h5>
             </div>
 
-            <form class="create-transaction-form" id="create-transaction-form">
-                <div class="form-group">
-                    <label for="description">Description : </label>
-                    <input type="text" id="description" placeholder="Transaction name">
-                </div>
+            <div class="create-transaction-calculate">
+                <form class="create-transaction-form" id="create-transaction-form">
+                    <div class="form-group">
+                        <input type="text" id="description" placeholder="Transaction name">
+                        <small id="descriptionError" class="error"></small>
+                    </div>
 
-                <div class="form-group">
-                    <label for="category">Category :</label>
-                    <select name="category" id="category">
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                </div>
+                    <div class="form-group">
+                        <select id="type">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="date">Date :</label>
-                    <input type="date" id="date">
-                </div>
+                    <div class="form-group">
+                        <select id="category" class="toggle-category">
+                            <option value="food">Food</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="housing">Housing</option>
+                            <option value="health">Health and Medical</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="education">Education</option>
+                            <option value="travel">Travel</option>
+                            <option value="investment">Investments & Saving</option>
+                            <option value="personal">Personal Expenses</option>
+                            <option value="debtpayments">Debt payments</option>
+                        </select>
+                        <small id="categoryError" class="error"></small>
 
-                <div class="form-group">
-                    <label for="amount">Amount :</label>
-                    <input type="number" id="amount" placeholder="1000">
-                </div>
+                        <select id="subcategory" class="toggle-category">
+                            <option value="groceries">Groceries</option>
+                        </select>
+                        <small id="subcategoryError" class="error"></small>
+                    </div>
 
-                <button type="submit" id="submitBtn">Add Transaction</button>
-            </form>
+                    <div class="form-group">
+                        <input type="date" id="date">
+                        <small id="dateError" class="error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" id="amount" placeholder="1000">
+                        <small id="amountError" class="error"></small>
+                    </div>
+
+                    <button type="submit" id="submitBtn">Add Transaction</button>
+                </form>
+
+                <div style="margin-top: 20px; text-align: center;">
+                    <button id="calculateNetIncome">Calculate</button>
+
+                    <div class="net-income-box" id="net-income-box">
+                        Net Income: <p id="netIncomeText">₹0</p>
+                    </div>
+
+                    <div class="net-income-box" id="total-income-box">
+                        Total Income: <p id="totalIncomeText">₹0</p>
+                    </div>
+
+                    <div class="net-income-box" id="total-expenses-box">
+                        Total Expenses: <p id="totalExpenseText">₹0</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
 
         <div class="transactions-list-container">
             <div class="transactions-container-incomes">
                 <h4>Incomes</h4>
                 <div class="incomes-list">
-
+                    <ul id="incomes-list"></ul>
                 </div>
             </div>
-            <div class="transactions-container-expenses">
-                <h4>Expenses</h4>
-                <div class="expenses-list">
 
+            <div class="transactions-container-expenses">
+                <div style="display: flex; justify-content: space-between;">
+                    <h4>Expenses</h4>
+                    <select class="filter_btn" id="filter_btn">
+                        <option value="">filter</option>
+                        <option value="food">Food</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="housing">Housing</option>
+                        <option value="health">Health and Medical</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="education">Education</option>
+                        <option value="travel">Travel</option>
+                        <option value="investment">Investments & Saving</option>
+                        <option value="personal">Personal Expenses</option>
+                        <option value="debtpayments">Debt payments</option>
+                    </select>
+                </div>
+                <div class="expenses-list">
+                    <ul id="expenses-list"></ul>
                 </div>
             </div>
         </div>
@@ -64,4 +125,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
